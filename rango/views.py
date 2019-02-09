@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from rango.models import Category
 from rango.models import Page
+from rango.forms import CategoryForm
 def show_category(request, category_name_slug):
 	context_dict={}
 	try:
@@ -22,3 +23,20 @@ def index(request):
 def about(request):
     about_context_dict = {'boldmessage': "About: This is a page about things; REAL things!"}
     return render(request, 'rango/about.html', context=about_context_dict)
+	
+def add_category(request):
+
+    form = CategoryForm()
+    if request.method == 'POST':
+
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            return index(request)
+
+        else:
+            print(form.errors)
+
+    return render(request, 'rango/add_category.html', {'form': form})
+
+    
