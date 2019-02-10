@@ -13,16 +13,9 @@ TEMPLATE_DIR=os.path.join(BASE_DIR,'templates')
 STATIC_DIR=os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS= [STATIC_DIR,]
 MEDIA_DIR=os.path.join(BASE_DIR, 'media')
-LOGIN_URL='/rango/login/'
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'c31hv@9nh^$m_^pn=tk$qp-$&qz^*-!)!p9s%mp_u^b_08$n#k'
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
@@ -116,3 +109,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_ROOT=MEDIA_DIR
 MEDIA_URL='/media/'
+LOGIN_URL='/rango/login/'
+LOGIN_URL = '/rango/login/'

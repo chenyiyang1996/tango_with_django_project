@@ -7,6 +7,8 @@ from rango.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login 
 from django.http import HttpResponseRedirect, HttpResponse 
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
+
 def show_category(request, category_name_slug):
 	context_dict={}
 	try:
@@ -151,6 +153,7 @@ def register(request):
 
 def user_login(request): 
 
+
 	if request.method == 'POST': 
 
 		username = request.POST.get('username') 
@@ -175,3 +178,6 @@ def user_login(request):
 
 		return render(request, 'rango/login.html', {})
 
+@login_required 
+def restricted(request): 
+	return HttpResponse("Since you're logged in, you can see this text!")
