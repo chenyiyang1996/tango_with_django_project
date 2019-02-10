@@ -5,7 +5,13 @@
 	</head>
 	<body> 
 	<h1>Rango says...</h1>
-	<div> hey there partner! </div>
+	<div>
+		{% if user.is_authenticated %} 
+			hey there partner! 
+		{% else %} 
+			hey there partner! 
+		{% endif %} 
+	</div>
 	<div>
 	{% if categories %} <ul> 
 		{% for category in categories %} <!-- Following line changed to add an HTML hyperlink --> 
@@ -19,10 +25,10 @@
 	</div>
 	<div> 
 		<a href="/rango/about/">About Rango</a><br /> 
-		<img src="{% static "images/cat.jpg" %}" alt="Picture of Rango" /> 
 		</div> 
 	<div> 
 		<a href="/rango/add_category/">Add a New Category</a><br /> 
+		<img src="{% static "images/cat.jpg" %}" alt="Picture of Rango" /> 
 		</div> 
 		
 	</body> 
