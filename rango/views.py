@@ -148,6 +148,7 @@ def register(request):
 
                   })
 				  
+
 def user_login(request): 
 
 	if request.method == 'POST': 
@@ -173,3 +174,4 @@ def user_login(request):
 	else: 
 
 		return render(request, 'rango/login.html', {})
+
