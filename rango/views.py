@@ -28,8 +28,8 @@ def index(request):
 	return render(request,'rango/index.html',context=context_dict)
 	
 def about(request):
-	Html = "Rango says here is the about page <a href='/rango/'>Index</a><br />"
-	return HttpResponse(Html)
+    about_context_dict = {'boldmessage': "Rango says here is the about page!"}
+    return render(request, 'rango/about.html', context=about_context_dict)
 	
 def add_category(request):
 
