@@ -150,11 +150,7 @@ def register(request):
                    'registered': registered
 
                   })
-def some_view(request): 
-	if not request.user.is_authenticated(): 
-		return HttpResponse("You are logged in.") 
-	else: 
-		return HttpResponse("You are not logged in.")				  
+			  
 
 def user_login(request): 
 
