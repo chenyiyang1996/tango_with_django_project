@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from rango.models import Category
 from rango.models import Page
@@ -7,7 +8,6 @@ from rango.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login 
 from django.http import HttpResponseRedirect, HttpResponse 
 from django.core.urlresolvers import reverse
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 
 def show_category(request, category_name_slug):
@@ -150,7 +150,11 @@ def register(request):
                    'registered': registered
 
                   })
-				  
+def some_view(request): 
+	if not request.user.is_authenticated(): 
+		return HttpResponse("You are logged in.") 
+	else: 
+		return HttpResponse("You are not logged in.")				  
 
 def user_login(request): 
 
