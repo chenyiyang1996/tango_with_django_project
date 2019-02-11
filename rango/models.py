@@ -1,6 +1,8 @@
+from __future__ import unicode_literals
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
+
 class Category(models.Model):
 	name = models.CharField(max_length=128, unique=True)
 	views=models.IntegerField(default=0)
@@ -13,7 +15,11 @@ class Category(models.Model):
 		verbose_name_plural='Categories'
 	def _str_(self):
 		return self.name
+	def __unicode__(self):
+		return self.name
 
+	
+		
 class Page(models.Model):
 	category = models.ForeignKey(Category)
 	title=models.CharField(max_length=128)
@@ -21,6 +27,8 @@ class Page(models.Model):
 	views=models.IntegerField(default=0)
 	
 	def _str_(self):
+		return self.title
+	def __unicode__(self):
 		return self.title
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
