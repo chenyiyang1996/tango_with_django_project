@@ -1,13 +1,13 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from django.http import HttpResponse
 from rango.models import Category
 from rango.models import Page
-from rango.forms import CategoryForm
-from rango.forms import PageForm
+from rango.forms import PageForm, CategoryForm
 from rango.forms import UserForm, UserProfileForm
-from django.contrib.auth import authenticate, login 
-from django.http import HttpResponseRedirect, HttpResponse 
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 
 def show_category(request, category_name_slug):
@@ -38,7 +38,7 @@ def add_category(request):
 
         form = CategoryForm(request.POST)
         if form.is_valid():
-            form.save(commit=True)
+            category=form.save(commit=True)
             return index(request)
 
         else:
